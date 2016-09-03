@@ -1,0 +1,31 @@
+# BEGIN GZIP
+<ifmodule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+</ifmodule>
+# END GZIP
+
+
+
+<IfModule mod_headers.c>
+# WEEK
+<FilesMatch "\.(jpg|jpeg|png|css|js|gif|swf)$">
+    Header set Cache-Control "max-age=604800, public"
+</FilesMatch>
+
+RewriteEngine On
+
+RewriteRule ^category-(.*)$ sub_category.php?id=$1 [L]
+RewriteRule ^club-(.*)$ event.php?id=$1 [L]
+RewriteRule ^result-(.*)$ result.php?id=$1 [L]
+RewriteRule ^gallery-(.*)$ gallery.php?id=$1 [L]
+RewriteRule ^contact-(.*)$ club_contact.php?id=$1 [L]
+
+
+RewriteRule ^songs-online_songs$	online_links.php?id=online_songs
+RewriteRule ^songs-offline_songs$	offline_links.php?id=offline_songs
+RewriteRule ^links-(.*)-(.*)$ links.php?heading=$1&id=$2 [L]
+RewriteRule ^links-(.*)$ event.php?id=$1 [L]
+RewriteRule ^links-(.*)-(.*)$ links.php?heading=$1&id=$2 [L]
+RewriteRule ^links-(.*)-(.*)$ links.php?heading=$1&id=$2 [L]
+
+
